@@ -1,4 +1,4 @@
-package com.diagnosticcenter;
+package com.savvygrocery;
 
 import android.app.Application;
 import com.facebook.react.PackageList;

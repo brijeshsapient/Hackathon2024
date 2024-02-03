@@ -1,31 +1,16 @@
-export const LOGIN_REQUEST = 'LOGIN_REQUEST';
-export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
-export const LOGIN_ERROR = 'LOGIN_ERROR';
-export const CLEAR_LOGIN_ERRORS = 'CLEAR_LOGIN_ERRORS';
+export const SET_CATEGORY = 'SET_CATEGORY';
+export const SET_CATEGORIES_LIST = 'SET_CATEGORIES_LIST';
 
-export function loginRequest(payload) {
+export function setCategory(payload) {
   return {
-    type: LOGIN_REQUEST,
-    data: payload,
+    type: SET_CATEGORY,
+    payload: payload,
   };
 }
 
-export function loginRequestSuccess(payload) {
+export function setCategoriesList(payload) {
   return {
-    type: LOGIN_SUCCESS,
+    type: SET_CATEGORIES_LIST,
     payload,
-  };
-}
-
-export function loginRequestError(payload: any) {
-  return {
-    type: LOGIN_ERROR,
-    payload,
-  };
-}
-
-export function clearLoginErrors() {
-  return {
-    type: CLEAR_LOGIN_ERRORS,
   };
 }

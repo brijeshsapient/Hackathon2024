@@ -1,27 +1,18 @@
-import {
-  LOGIN_REQUEST,
-  LOGIN_SUCCESS,
-  LOGIN_ERROR,
-  CLEAR_LOGIN_ERRORS,
-} from './Home.action';
+import {SET_CATEGORY, SET_CATEGORIES_LIST} from './Home.action';
+import {caategories} from './Home.constants';
 
 export const initialState = {
-  isLoading: false,
-  loginDetails: undefined,
-  loginError: undefined,
+  categories: caategories,
+  selectedCategories: undefined,
 };
 
 export default function (state = initialState, action: any) {
   const {payload, type} = action;
   switch (type) {
-    case LOGIN_REQUEST:
-      return {isLoading: true};
-    case LOGIN_SUCCESS:
-      return {...state, loginDetails: payload.data, isLoading: false};
-    case LOGIN_ERROR:
-      return {...state, loginError: payload.error, isLoading: false};
-    case CLEAR_LOGIN_ERRORS:
-      return {...state, loginError: undefined};
+    case SET_CATEGORY:
+      return {...state, selectedCategories: payload};
+    case SET_CATEGORIES_LIST:
+      return {...state, categories: payload};
     default:
       return state;
   }

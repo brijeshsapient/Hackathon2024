@@ -9,6 +9,9 @@ import AddressListContainer from '../screens/addressList/container/AddressList.c
 import AddAddressContainer from '../screens/addAddress/container/AddAddress.container';
 import CheckoutContainer from '../screens/checkout/container/Checkout.container';
 import OrderConfirmationContainer from '../screens/orderConfirmation/container/OrderConfirmation.container';
+import ChangeStoreContainer from '../screens/changeStore/container/ChangeStore.container';
+import CLPContainer from '../screens/categoryListing/container/CLP.container';
+import PLPContainer from '../screens/productListing/container/PLP.container';
 
 const Stack = createNativeStackNavigator();
 
@@ -18,10 +21,16 @@ function AppNavigation() {
       screenOptions={{
         headerShown: false,
       }}>
+      <Stack.Screen name={Screens.bottomTabs} component={BottomTabStack} />
       <Stack.Screen name={Screens.login} component={LoginContainer} />
       <Stack.Screen name={Screens.signup} component={SignupContainer} />
-      <Stack.Screen name={Screens.bottomTabs} component={BottomTabStack} />
       <Stack.Screen name={Screens.testDetail} component={TestDetailContainer} />
+      <Stack.Screen name={Screens.clp} component={CLPContainer} />
+      <Stack.Screen name={Screens.plp} component={PLPContainer} />
+      <Stack.Screen
+        name={Screens.changeStore}
+        component={ChangeStoreContainer}
+      />
       <Stack.Screen
         name={Screens.addressList}
         component={AddressListContainer}

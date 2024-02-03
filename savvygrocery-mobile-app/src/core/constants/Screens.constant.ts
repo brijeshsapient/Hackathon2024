@@ -5,12 +5,15 @@ export enum Screens {
   bottomTabs = 'bottomTabs',
   settings = 'settings',
   testDetail = 'testDetail',
+  changeStore = 'changeStore',
   cart = 'cart',
   addAddress = 'addAddress',
   addressList = 'addressList',
   checkout = 'checkout',
   orderConfirmation = 'orderConfirmation',
   search = 'search',
+  clp = 'clp',
+  plp = 'plp',
 }
 
 export enum BottomTabs {

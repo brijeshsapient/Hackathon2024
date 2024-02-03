@@ -3,6 +3,8 @@ import {AppState} from '../types';
 import {StateKey} from '../constants/StateKey.constant';
 import LoginReducer from '../../screens/login/container/Login.reducer';
 import CartReducer from '../../screens/cart/container/Cart.reducer';
+import ChangeStoreReducer from '../../screens/changeStore/container/ChangeStore.reducer';
+import HomeReducer from '../../screens/home/container/Home.reducer';
 
 /**
  * Combine all reducers
@@ -10,6 +12,8 @@ import CartReducer from '../../screens/cart/container/Cart.reducer';
 const appReducer = combineReducers<AppState>({
   [StateKey.login]: LoginReducer,
   [StateKey.cart]: CartReducer,
+  [StateKey.changeStore]: ChangeStoreReducer,
+  [StateKey.home]: HomeReducer,
 });
 
 export const RootReducer = (state: AppState, action: any) => {

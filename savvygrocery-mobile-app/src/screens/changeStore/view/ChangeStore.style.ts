@@ -3,7 +3,6 @@ import {StyleSheet} from '../../../uilib/atoms/elements';
 import {
   SemiBold14OpenSans,
   SemiBold12OpenSans,
-  Bold22OpenSans,
 } from '../../../uilib/typography';
 
 const styles = (theme: Theme) =>
@@ -36,27 +35,20 @@ const styles = (theme: Theme) =>
       ...SemiBold12OpenSans,
       color: theme.colors.black,
     },
-    storeText: {
-      ...SemiBold14OpenSans,
-      color: theme.colors.lapisBlue,
-    },
-    categoriesText: {
-      ...Bold22OpenSans,
-      color: theme.colors.lapisBlue,
-    },
     flatListDiscountedPriceText: {
       ...SemiBold14OpenSans,
       color: theme.colors.freeSpeechRed,
     },
     flatListPriceContainer: {
       flexDirection: 'row',
+      marginTop: 10,
       alignItems: 'center',
     },
     flatListTestCountContainer: {
       backgroundColor: 'grey',
       height: 25,
       borderRadius: 12.5,
-      width: 180,
+      width: 150,
       alignItems: 'center',
       justifyContent: 'center',
       marginTop: 10,

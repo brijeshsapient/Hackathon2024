@@ -3,4 +3,6 @@ export const StateKey = {
   signup: 'signup',
   cookie: 'cookie',
   cart: 'cart',
+  changeStore: 'changeStore',
+  home: 'home',
 };

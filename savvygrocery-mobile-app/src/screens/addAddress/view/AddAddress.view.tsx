@@ -6,25 +6,32 @@ import {
   Input,
   withTheme,
 } from '../../../uilib/atoms/elements';
-import {Image, ScrollView} from 'react-native';
+import {ScrollView} from 'react-native';
 import styles from './AddAddress.style';
-import {navigateTo, navigateToBack} from '../../../utils/RootNavigation.utils';
-import {Screens} from '../../../core/constants/Screens.constant';
+import {navigateToBack} from '../../../utils/RootNavigation.utils';
 import HeaderView from '../../../uilib/organisms/Header/view/Header.view';
 
 const AddAddressView = props => {
   const style = styles(props.theme);
+  const [contactName, setContactName] = useState('');
+  const [contactMobile, setContactMobile] = useState('');
+  const [billingAddress, setBillingAddress] = useState('');
   const [emailId, setEmailId] = useState('');
-  const [password, setPassword] = useState('');
+  const [shippingAddress, setShippingAddress] = useState('');
 
-  const onChangeEmailID = (newEmaild: string) => {
-    setEmailId(newEmaild);
+  const onChangeInput = (value: string, id: string) => {
+    if (id === 'contactName') {
+      setContactName(value);
+    } else if (id === 'contactMobile') {
+      setContactMobile(value);
+    } else if (id === 'emailId') {
+      setEmailId(value);
+    } else if (id === 'shippingAddress') {
+      setShippingAddress(value);
+    } else if (id === 'billingAddress') {
+      setBillingAddress(value);
+    }
   };
-
-  const onChangePassword = (newPassowrd: string) => {
-    setPassword(newPassowrd);
-  };
-
   return (
     <>
       <HeaderView title="Add Address" navigation={props.navigation} />
@@ -33,41 +40,51 @@ const AddAddressView = props => {
           <Input
             inputStyle={style.input}
             inputContainerStyle={style.inputContainer}
-            placeholder="Name"
+            placeholder="Full Name"
+            value={contactName}
+            onChangeText={value => {
+              onChangeInput(value, 'contactName');
+            }}
+            style={style.inputLeftStyle}
+          />
+          <Input
+            inputStyle={style.input}
+            inputContainerStyle={style.inputContainer}
+            placeholder="Mobile"
+            value={contactMobile}
+            onChangeText={value => {
+              onChangeInput(value, 'contactMobile');
+            }}
+            style={style.inputLeftStyle}
+          />
+          <Input
+            inputStyle={style.input}
+            inputContainerStyle={style.inputContainer}
+            placeholder="Email Id"
             value={emailId}
-            onChangeText={onChangeEmailID}
+            onChangeText={value => {
+              onChangeInput(value, 'emailId');
+            }}
             style={style.inputLeftStyle}
           />
           <Input
             inputStyle={style.input}
             inputContainerStyle={style.inputContainer}
-            placeholder="Street Address"
-            value={password}
-            onChangeText={onChangePassword}
+            placeholder="Shipping Address"
+            value={shippingAddress}
+            onChangeText={value => {
+              onChangeInput(value, 'shippingAddress');
+            }}
             style={style.inputLeftStyle}
           />
           <Input
             inputStyle={style.input}
             inputContainerStyle={style.inputContainer}
-            placeholder="City"
-            value={password}
-            onChangeText={onChangePassword}
-            style={style.inputLeftStyle}
-          />
-          <Input
-            inputStyle={style.input}
-            inputContainerStyle={style.inputContainer}
-            placeholder="State"
-            value={emailId}
-            onChangeText={onChangeEmailID}
-            style={style.inputLeftStyle}
-          />
-          <Input
-            inputStyle={style.input}
-            inputContainerStyle={style.inputContainer}
-            placeholder="Pincode"
-            value={password}
-            onChangeText={onChangePassword}
+            placeholder="Billing Address"
+            value={billingAddress}
+            onChangeText={value => {
+              onChangeInput(value, 'billingAddress');
+            }}
             style={style.inputLeftStyle}
           />
           <View style={style.buttonContainer}>

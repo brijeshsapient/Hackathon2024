@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "830955451537",
+    "project_id": "savvygrocery-35e94",
+    "storage_bucket": "savvygrocery-35e94.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:830955451537:android:3491580912de797082bb30",
+        "android_client_info": {
+          "package_name": "com.savvy.grocery"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCipPEHQZiHDWfz6tpihmcn9Gs4l_eHqYQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:830955451537:android:eb83303627ce06b182bb30",
+        "android_client_info": {
+          "package_name": "com.savvygrocery"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCipPEHQZiHDWfz6tpihmcn9Gs4l_eHqYQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

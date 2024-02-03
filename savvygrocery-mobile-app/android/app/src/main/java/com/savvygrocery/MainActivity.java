@@ -1,4 +1,4 @@
-package com.diagnosticcenter;
+package com.savvygrocery;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;

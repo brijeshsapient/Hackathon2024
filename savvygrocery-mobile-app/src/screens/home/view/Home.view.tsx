@@ -12,6 +12,8 @@ import CardView from '../../../uilib/atoms/card/Card.view';
 import {navigateTo} from '../../../utils/RootNavigation.utils';
 import {BottomTabs, Screens} from '../../../core/constants/Screens.constant';
 import SearchTabSVG from '../../../resources/assets/svg/SearchTabSVG';
+import { AlanView } from '@alan-ai/alan-sdk-react-native';
+import { NativeEventEmitter, NativeModules } from 'react-native';
 
 const HomeView = props => {
   const style = styles(props.theme);
@@ -54,7 +56,12 @@ const HomeView = props => {
     testCount: 90,
     price: 2239,
   });
-
+  const { AlanManager, AlanEventEmitter } = NativeModules;
+  const alanEventEmitter = new NativeEventEmitter(AlanEventEmitter);
+  
+  const subscription = alanEventEmitter.addListener('command', (data) => {
+    console.log(`got command event ${JSON.stringify(data)}`);
+  });
   const homeFlatlistRenderItem = item => {
     return (
       <CardView style={style.flatListCard}>
@@ -64,6 +71,7 @@ const HomeView = props => {
               item: item,
             });
           }}>
+          <AlanView projectid={'1813738a241fb35f8052ab619b31ef7a2e956eca572e1d8b807a3e2338fdd0dc/stage'}/>
           <Text
             style={style.flatListText}
             numberOfLines={2}

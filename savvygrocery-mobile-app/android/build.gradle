@@ -13,6 +13,11 @@ buildscript {
     repositories {
         google()
         mavenCentral()
+        configurations.all {
+            resolutionStrategy {
+                force 'com.facebook.react:react-native:0.72.6' //select Version you used
+            }
+        }
     }
     dependencies {
         classpath("com.android.tools.build:gradle")

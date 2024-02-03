@@ -9,34 +9,24 @@ import {
 import styles from './Checkout.style';
 import HeaderView from '../../../uilib/organisms/Header/view/Header.view';
 import CardView from '../../../uilib/atoms/card/Card.view';
-import {navigateTo} from '../../../utils/RootNavigation.utils';
-import {Screens} from '../../../core/constants/Screens.constant';
+import { navigateTo } from '../../../utils/RootNavigation.utils';
+import { Screens } from '../../../core/constants/Screens.constant';
+import { Image } from 'react-native';
+import ItemCard from '../../../uilib/atoms/shopItem/ItemCard.view';
+import { useRoute } from '@react-navigation/native';
 
 const CheckoutView = props => {
   const style = styles(props.theme);
   // const item = props.item;
+  const route = useRoute();
+  const address = route?.params;
+
 
   const homeFlatlistRenderItem = item => {
+
     return (
       <CardView style={style.flatListCard}>
-        <Text style={style.flatListText} numberOfLines={2} ellipsizeMode="tail">
-          {item.title}
-        </Text>
-        <View style={style.flatListTestCountContainer}>
-          <Text
-            style={
-              style.flatListTestCountText
-            }>{`Includes: ${item.testCount} Parameters`}</Text>
-        </View>
-        <View style={style.flatListPriceContainer}>
-          <Text style={style.flatListDiscountedPriceLabelText}>
-            {'Price: '}
-          </Text>
-          <Text style={style.flatListPriceText}>{`₹${item.price}`}</Text>
-          <Text style={style.flatListDiscountedPriceText}>
-            {`₹${item.price}`}
-          </Text>
-        </View>
+        <ItemCard item={item} />
       </CardView>
     );
   };
@@ -47,22 +37,38 @@ const CheckoutView = props => {
       <View style={style.subview}>
         <FlatList
           data={props.cartItems}
-          keyExtractor={item => item.id.toString()}
+          keyExtractor={item => item.product_id.toString()}
           renderItem={item => {
             return homeFlatlistRenderItem(item.item);
           }}
-          ListFooterComponent={() => {
-            return (
-              <TouchableOpacity
-                style={style.addAddressButton}
-                onPress={() => {
-                  navigateTo(props.navigation, Screens.addressList);
-                }}>
-                <Text style={style.addAddressButtonText}>Select Address</Text>
-              </TouchableOpacity>
-            );
-          }}
         />
+
+        {
+          address?.id ?
+            <TouchableOpacity
+              onPress={() => {
+                navigateTo(props.navigation, Screens.addressList);
+              }}
+              style={{ marginVertical: 20 }}
+            >
+              <Text style={{ fontSize: 18, fontWeight: 'bold', marginVertical: 5, textAlign: 'center' }}>{'Address : '}</Text>
+              <CardView style={style.flatListCard}>
+                <Text style={style.flatListText} numberOfLines={2} ellipsizeMode="tail">
+                  {address?.title}
+                </Text>
+                <Text style={[style.flatListTestCountText, { color: 'black' }]}>{address?.address}</Text>
+              </CardView>
+            </TouchableOpacity>
+            :
+            <TouchableOpacity
+              style={style.addAddressButton}
+              onPress={() => {
+                navigateTo(props.navigation, Screens.addressList);
+              }}>
+              <Text style={style.addAddressButtonText}>Select Address</Text>
+            </TouchableOpacity>
+        }
+
         {props.cartItems.length > 0 ? (
           <TouchableOpacity
             style={style.addToCartButton}

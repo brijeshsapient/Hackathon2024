@@ -16,6 +16,7 @@ const styles = (theme: Theme) =>
       marginHorizontal: 16,
       marginVertical: 8,
       justifyContent: 'center',
+      paddingBottom:80
     },
     flatListText: {...SemiBold14OpenSans},
     flatListTestCountText: {...SemiBold14OpenSans, color: theme.colors.white},
@@ -36,7 +37,6 @@ const styles = (theme: Theme) =>
     },
     flatListPriceContainer: {
       flexDirection: 'row',
-      marginTop: 10,
       alignItems: 'center',
     },
     flatListTestCountContainer: {
@@ -58,6 +58,10 @@ const styles = (theme: Theme) =>
       justifyContent: 'center',
       backgroundColor: theme.colors.lapisBlue,
       opacity: 1,
+      position:'absolute',
+      bottom:0,
+      left:0,
+      right:0
     },
     disabledOpacity: {
       opacity: 0.4,

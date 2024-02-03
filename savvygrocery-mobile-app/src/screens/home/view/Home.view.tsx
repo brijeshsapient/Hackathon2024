@@ -32,18 +32,7 @@ const HomeView = props => {
           onPress={() => {
             navigateTo(props.navigation, Screens.clp);
           }}>
-          <Text
-            style={style.flatListText}
-            numberOfLines={2}
-            ellipsizeMode="tail">
-            {item.title}
-          </Text>
-          <View style={style.flatListTestCountContainer}>
-            <Text
-              style={
-                style.flatListTestCountText
-              }>{`Includes: ${item.testCount} Parameters`}</Text>
-          </View>
+         
           <View style={style.flatListPriceContainer}>
             <Image
               source={{uri: item.image}}

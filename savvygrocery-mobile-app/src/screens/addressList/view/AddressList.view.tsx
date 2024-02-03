@@ -8,13 +8,14 @@ import {
 } from '../../../uilib/atoms/elements';
 import HeaderView from '../../../uilib/organisms/Header/view/Header.view';
 import CardView from '../../../uilib/atoms/card/Card.view';
-import {navigateTo} from '../../../utils/RootNavigation.utils';
-import {Screens} from '../../../core/constants/Screens.constant';
+import { navigateTo } from '../../../utils/RootNavigation.utils';
+import { Screens } from '../../../core/constants/Screens.constant';
 import styles from './AddressList.style';
 
 const AddressListView = props => {
   const style = styles(props.theme);
   // const item = props.item;
+
 
   const homeItems = [];
   homeItems.push({
@@ -34,13 +35,16 @@ const AddressListView = props => {
   });
 
   const homeFlatlistRenderItem = item => {
+    const address = item
     return (
-      <CardView style={style.flatListCard}>
-        <Text style={style.flatListText} numberOfLines={2} ellipsizeMode="tail">
-          {item.title}
-        </Text>
-        <Text style={style.flatListTestCountText}>{item.address}</Text>
-      </CardView>
+      <TouchableOpacity onPress={() => { navigateTo(props.navigation, Screens.checkout, address ?? {}); }}>
+        <CardView style={style.flatListCard}>
+          <Text style={style.flatListText} numberOfLines={2} ellipsizeMode="tail">
+            {item.title}
+          </Text>
+          <Text style={style.flatListTestCountText}>{item.address}</Text>
+        </CardView>
+      </TouchableOpacity>
     );
   };
 

@@ -7,8 +7,11 @@ import {
 } from '../../../uilib/atoms/elements';
 import styles from './OrderConfirmation.style';
 import HeaderView from '../../../uilib/organisms/Header/view/Header.view';
-import {navigateTo} from '../../../utils/RootNavigation.utils';
-import {BottomTabs, Screens} from '../../../core/constants/Screens.constant';
+import { navigateTo } from '../../../utils/RootNavigation.utils';
+import { BottomTabs, Screens } from '../../../core/constants/Screens.constant';
+import { Image } from 'react-native';
+import CardView from '../../../uilib/atoms/card/Card.view';
+import ItemCard from '../../../uilib/atoms/shopItem/ItemCard.view';
 
 const OrderConfirmationView = props => {
   const style = styles(props.theme);
@@ -29,27 +32,9 @@ const OrderConfirmationView = props => {
             ellipsizeMode="tail">
             {'Congratulations, you order has been successfully placed.'}
           </Text>
-          <Text
-            style={style.flatListText}
-            numberOfLines={2}
-            ellipsizeMode="tail">
-            {item.title}
-          </Text>
-          <View style={style.flatListTestCountContainer}>
-            <Text
-              style={
-                style.flatListTestCountText
-              }>{`Includes: ${item.testCount} Parameters`}</Text>
-          </View>
-          <View style={style.flatListPriceContainer}>
-            <Text style={style.flatListDiscountedPriceLabelText}>
-              {'Price: '}
-            </Text>
-            <Text style={style.flatListPriceText}>{`₹${item.price}`}</Text>
-            <Text style={style.flatListDiscountedPriceText}>
-              {`₹${item.price}`}
-            </Text>
-          </View>
+          <CardView style={style.flatListCard}>
+            <ItemCard item={item} />
+          </CardView>
         </View>
         <TouchableOpacity
           style={[style.addToCartButton]}

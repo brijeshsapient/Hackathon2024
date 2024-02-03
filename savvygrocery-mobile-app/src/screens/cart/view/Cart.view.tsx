@@ -1,19 +1,20 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import { Image } from 'react-native';
 import {
   FlatList,
   Text,
   TouchableOpacity,
   View,
   withTheme,
-  Image,
 } from '../../../uilib/atoms/elements';
 import styles from './Cart.style';
 import HeaderView from '../../../uilib/organisms/Header/view/Header.view';
 import CardView from '../../../uilib/atoms/card/Card.view';
-import {navigateTo} from '../../../utils/RootNavigation.utils';
-import {Screens} from '../../../core/constants/Screens.constant';
-import {launchDeviceImageLibrary} from '../../../utils/ImageLibrary.utils';
-import {isEmpty} from 'lodash';
+import { navigateTo } from '../../../utils/RootNavigation.utils';
+import { Screens } from '../../../core/constants/Screens.constant';
+import { launchDeviceImageLibrary } from '../../../utils/ImageLibrary.utils';
+import { isEmpty } from 'lodash';
+import ItemCard from '../../../uilib/atoms/shopItem/ItemCard.view';
 
 const CartView = props => {
   const style = styles(props.theme);
@@ -22,24 +23,7 @@ const CartView = props => {
   const homeFlatlistRenderItem = item => {
     return (
       <CardView style={style.flatListCard}>
-        <Text style={style.flatListText} numberOfLines={2} ellipsizeMode="tail">
-          {item.title}
-        </Text>
-        <View style={style.flatListTestCountContainer}>
-          <Text
-            style={
-              style.flatListTestCountText
-            }>{`Includes: ${item.testCount} Parameters`}</Text>
-        </View>
-        <View style={style.flatListPriceContainer}>
-          <Text style={style.flatListDiscountedPriceLabelText}>
-            {'Price: '}
-          </Text>
-          <Text style={style.flatListPriceText}>{`₹${item.price}`}</Text>
-          <Text style={style.flatListDiscountedPriceText}>
-            {`₹${item.price}`}
-          </Text>
-        </View>
+        <ItemCard item={item} />
       </CardView>
     );
   };
@@ -56,7 +40,7 @@ const CartView = props => {
           <>
             <FlatList
               data={props.cartItems}
-              keyExtractor={item => item.id.toString()}
+              keyExtractor={item => item.product_id.toString()}
               renderItem={item => {
                 return homeFlatlistRenderItem(item.item);
               }}
@@ -72,8 +56,8 @@ const CartView = props => {
                     alignItems: 'center',
                   }}>
                   <Image
-                    style={{height: 120, width: 120}}
-                    source={{uri: image}}
+                    style={{ height: 120, width: 120 }}
+                    source={{ uri: image }}
                   />
                   <TouchableOpacity
                     style={style.addToCartButton}
@@ -86,7 +70,7 @@ const CartView = props => {
                   </TouchableOpacity>
                 </View>
               ) : null}
-              <TouchableOpacity
+              {/* <TouchableOpacity
                 style={style.addToCartButton}
                 onPress={() => {
                   launchDeviceImageLibrary()
@@ -100,7 +84,7 @@ const CartView = props => {
                 <Text style={style.addToCartButtonText}>
                   Select Prescription
                 </Text>
-              </TouchableOpacity>
+              </TouchableOpacity> */}
               <TouchableOpacity
                 style={style.addToCartButton}
                 onPress={() => {

@@ -8,6 +8,7 @@ import {BottomTabIconProps, BottomTabProps} from '../types/AppNavigation.type';
 import {withTheme} from '../../uilib/atoms/elements';
 import {Regular12OpenSans} from '../../uilib/typography';
 import CartStack from '../Cart.stack';
+import SearchStack from '../Search.stack';
 
 const Tab = createBottomTabNavigator();
 
@@ -53,6 +54,7 @@ export const BottomTab = (props: BottomTabProps) => {
         detachInactiveScreens: true,
       })}>
       {getTabScreen(BottomTabs.home, HomeStack)}
+      {getTabScreen(BottomTabs.search, SearchStack)}
       {getTabScreen(BottomTabs.cart, CartStack)}
       {getTabScreen(BottomTabs.settings, SettingsStack)}
     </Tab.Navigator>

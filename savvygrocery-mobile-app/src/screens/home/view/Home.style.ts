@@ -16,6 +16,12 @@ const styles = (theme: Theme) =>
       marginVertical: 8,
       justifyContent: 'center',
     },
+    headerRightButton: {
+      marginRight: 16,
+      height: 30,
+      width: 30,
+      justifyContent: 'center',
+    },
     flatListText: {...SemiBold14OpenSans},
     flatListTestCountText: {...SemiBold14OpenSans, color: theme.colors.white},
     flatListPriceText: {

@@ -10,7 +10,8 @@ import styles from './Home.style';
 import HeaderView from '../../../uilib/organisms/Header/view/Header.view';
 import CardView from '../../../uilib/atoms/card/Card.view';
 import {navigateTo} from '../../../utils/RootNavigation.utils';
-import {Screens} from '../../../core/constants/Screens.constant';
+import {BottomTabs, Screens} from '../../../core/constants/Screens.constant';
+import SearchTabSVG from '../../../resources/assets/svg/SearchTabSVG';
 
 const HomeView = props => {
   const style = styles(props.theme);
@@ -89,12 +90,31 @@ const HomeView = props => {
     );
   };
 
+  const onCartButtonPress = () => {
+    props.navigation.navigate({
+      name: Screens.bottomTabs,
+      params: {screen: BottomTabs.search},
+      merge: true,
+    });
+  };
+
+  const getRightComponent = () => {
+    return (
+      <TouchableOpacity
+        style={style.headerRightButton}
+        onPress={onCartButtonPress}>
+        <SearchTabSVG color={'white'} widthProp={22} heightProp={22} />
+      </TouchableOpacity>
+    );
+  };
+
   return (
     <View style={style.container}>
       <HeaderView
         navigation={props.navigation}
         title="Home"
         isBackButtonHidden={true}
+        rightComponent={getRightComponent()}
       />
       <FlatList
         data={homeItems}

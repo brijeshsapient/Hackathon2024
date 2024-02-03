@@ -9,7 +9,7 @@ import styles from './OrderConfirmation.style';
 import HeaderView from '../../../uilib/organisms/Header/view/Header.view';
 import { navigateTo } from '../../../utils/RootNavigation.utils';
 import { BottomTabs, Screens } from '../../../core/constants/Screens.constant';
-import { Image } from 'react-native';
+import { FlatList, Image } from 'react-native';
 import CardView from '../../../uilib/atoms/card/Card.view';
 import ItemCard from '../../../uilib/atoms/shopItem/ItemCard.view';
 
@@ -32,9 +32,13 @@ const OrderConfirmationView = props => {
             ellipsizeMode="tail">
             {'Congratulations, you order has been successfully placed.'}
           </Text>
-          <CardView style={style.flatListCard}>
-            <ItemCard item={item} />
-          </CardView>
+          <FlatList data={props.item} keyExtractor={(item, index) => `${item?.name} ${index}`} renderItem={({ item }) => {
+            return (
+              <CardView style={style.flatListCard}>
+                <ItemCard item={item} />
+              </CardView>
+            )
+          }} />
         </View>
         <TouchableOpacity
           style={[style.addToCartButton]}

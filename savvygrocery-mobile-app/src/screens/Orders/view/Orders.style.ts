@@ -16,7 +16,6 @@ const styles = (theme: Theme) =>
       marginHorizontal: 16,
       marginVertical: 8,
       justifyContent: 'center',
-      paddingBottom:20
     },
     flatListText: {...SemiBold14OpenSans},
     flatListTestCountText: {...SemiBold14OpenSans, color: theme.colors.white},
@@ -37,6 +36,7 @@ const styles = (theme: Theme) =>
     },
     flatListPriceContainer: {
       flexDirection: 'row',
+      marginTop: 10,
       alignItems: 'center',
     },
     flatListTestCountContainer: {
@@ -52,19 +52,18 @@ const styles = (theme: Theme) =>
     addToCartButton: {
       height: 48,
       borderRadius: 10,
-      margin: 16,
+      marginHorizontal: 16,
+      marginBottom: 16,
       alignItems: 'center',
       justifyContent: 'center',
       backgroundColor: theme.colors.lapisBlue,
-      opacity: 1,
-    },
-    disabledOpacity: {
-      opacity: 0.4,
     },
     addToCartButtonText: {
       ...Bold14OpenSans,
       color: theme.colors.white,
     },
+    noItemsView: {alignItems: 'center', justifyContent: 'center', flex: 1},
+    noItemsText: {...Bold14OpenSans},
   });
 
 export default styles;

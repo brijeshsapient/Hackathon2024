@@ -31,6 +31,12 @@ const CheckoutView = props => {
     );
   };
 
+  const randomString = (length, chars) => {
+    var result = '';
+    for (var i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
+    return result;
+  }
+
   return (
     <View style={style.container}>
       <HeaderView navigation={props.navigation} title="Checkout" />
@@ -73,8 +79,10 @@ const CheckoutView = props => {
           <TouchableOpacity
             style={style.addToCartButton}
             onPress={() => {
+              const orderId = randomString(32, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
+              props.addItemToOrder({ orderId, items: props.cartItems })
               navigateTo(props.navigation, Screens.orderConfirmation, {
-                item: props.cartItems[0],
+                item: props.cartItems,
               });
             }}>
             <Text style={style.addToCartButtonText}>Proceed to Payment</Text>

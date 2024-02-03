@@ -10,7 +10,7 @@ import HeaderView from '../../../uilib/organisms/Header/view/Header.view';
 import {Text} from 'react-native-elements';
 import CardView from '../../../uilib/atoms/card/Card.view';
 import {navigateTo} from '../../../utils/RootNavigation.utils';
-import {Screens} from '../../../core/constants/Screens.constant';
+import { Screens} from '../../../core/constants/Screens.constant';
 
 const SettingsView = props => {
   const style = styles(props.theme);
@@ -37,6 +37,9 @@ const SettingsView = props => {
               onPress={() => {
                 if (item.item.id === 4) {
                   navigateTo(props.navigation, Screens.addressList);
+                }
+                if (item.item.id === 3) {
+                  navigateTo(props.navigation, Screens.orders);
                 }
               }}>
               <CardView style={style.flatListCard}>

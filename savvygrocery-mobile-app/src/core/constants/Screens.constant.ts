@@ -14,6 +14,8 @@ export enum Screens {
   search = 'search',
   clp = 'clp',
   plp = 'plp',
+  orders='orders',
+  orderDetails='orderDetails'
 }
 
 export enum BottomTabs {

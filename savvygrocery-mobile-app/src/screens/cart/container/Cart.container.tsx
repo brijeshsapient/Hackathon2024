@@ -2,7 +2,6 @@ import React from 'react';
 import CartView from '../view/Cart.view';
 import {connect} from 'react-redux';
 import {getCartItems} from './Cart.selector';
-import {removeItemToCart} from './Cart.action';
 import {AppState} from '../../../core/types';
 
 const CartContainer = props => {
@@ -17,7 +16,6 @@ export const mapStateToProps = (state: AppState) => {
 
 export const mapDispatchToProps = (dispatch: any) => {
   return {
-    removeItem: payload => dispatch(removeItemToCart(payload)),
   };
 };
 

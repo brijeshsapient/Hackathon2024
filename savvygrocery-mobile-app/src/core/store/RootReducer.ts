@@ -3,6 +3,7 @@ import {AppState} from '../types';
 import {StateKey} from '../constants/StateKey.constant';
 import LoginReducer from '../../screens/login/container/Login.reducer';
 import CartReducer from '../../screens/cart/container/Cart.reducer';
+import OrderReducer from '../../screens/Orders/container/Orders.reducer';
 import ChangeStoreReducer from '../../screens/changeStore/container/ChangeStore.reducer';
 import HomeReducer from '../../screens/home/container/Home.reducer';
 
@@ -14,6 +15,7 @@ const appReducer = combineReducers<AppState>({
   [StateKey.cart]: CartReducer,
   [StateKey.changeStore]: ChangeStoreReducer,
   [StateKey.home]: HomeReducer,
+  [StateKey.order]: OrderReducer,
 });
 
 export const RootReducer = (state: AppState, action: any) => {

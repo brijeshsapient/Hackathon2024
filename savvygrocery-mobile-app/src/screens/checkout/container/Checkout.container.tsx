@@ -2,12 +2,13 @@ import React from 'react';
 import CheckoutView from '../view/Checkout.view';
 import {connect} from 'react-redux';
 import {getCartItems} from './Checkout.selector';
-import {removeItemToCart} from './Checkout.action';
 import {AppState} from '../../../core/types';
+import { addOrder } from '../../Orders/container/Orders.action';
 
 const CheckoutContainer = props => {
   return (
-    <CheckoutView navigation={props.navigation} cartItems={props.cartItems} />
+      
+      <CheckoutView navigation={props.navigation} cartItems={props.cartItems} addItemToOrder={props.addOrderItem} />
   );
 };
 
@@ -19,7 +20,8 @@ export const mapStateToProps = (state: AppState) => {
 
 export const mapDispatchToProps = (dispatch: any) => {
   return {
-    removeItem: payload => dispatch(removeItemToCart(payload)),
+    addOrderItem: payload => dispatch(addOrder(payload)),
+
   };
 };
 

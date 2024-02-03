@@ -5,4 +5,5 @@ export const StateKey = {
   cart: 'cart',
   changeStore: 'changeStore',
   home: 'home',
+  order:'order'
 };

@@ -13,9 +13,18 @@ import {BottomTabs, Screens} from '../../../core/constants/Screens.constant';
 import SearchTabSVG from '../../../resources/assets/svg/SearchTabSVG';
 import {Image} from 'react-native-elements';
 import {ActivityIndicator} from 'react-native';
+import {AlanView} from '@alan-ai/alan-sdk-react-native';
+import {NativeEventEmitter, NativeModules} from 'react-native';
 
 const HomeView = props => {
   const style = styles(props.theme);
+
+  const {AlanManager, AlanEventEmitter} = NativeModules;
+  const alanEventEmitter = new NativeEventEmitter(AlanEventEmitter);
+
+  const subscription = alanEventEmitter.addListener('command', data => {
+    console.log(`got command event ${JSON.stringify(data)}`);
+  });
   const homeFlatlistRenderItem = item => {
     return (
       <CardView style={style.flatListCard}>
@@ -23,6 +32,18 @@ const HomeView = props => {
           onPress={() => {
             navigateTo(props.navigation, Screens.clp);
           }}>
+          <Text
+            style={style.flatListText}
+            numberOfLines={2}
+            ellipsizeMode="tail">
+            {item.title}
+          </Text>
+          <View style={style.flatListTestCountContainer}>
+            <Text
+              style={
+                style.flatListTestCountText
+              }>{`Includes: ${item.testCount} Parameters`}</Text>
+          </View>
           <View style={style.flatListPriceContainer}>
             <Image
               source={{uri: item.image}}
@@ -100,6 +121,11 @@ const HomeView = props => {
         {getLeftComponent()}
         {getRightComponent()}
       </View>
+      <AlanView
+        projectid={
+          '1813738a241fb35f8052ab619b31ef7a2e956eca572e1d8b807a3e2338fdd0dc/stage'
+        }
+      />
       <Text style={[style.categoriesText, {marginLeft: 16}]}>
         {'Categories'}
       </Text>

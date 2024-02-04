@@ -12,11 +12,20 @@ import { BottomTabs, Screens } from '../../../core/constants/Screens.constant';
 import { FlatList, Image } from 'react-native';
 import CardView from '../../../uilib/atoms/card/Card.view';
 import ItemCard from '../../../uilib/atoms/shopItem/ItemCard.view';
+import { NativeEventEmitter, NativeModules } from 'react-native';
 
 const OrderConfirmationView = props => {
   const style = styles(props.theme);
   const item = props.item;
-
+  const { AlanEventEmitter} = NativeModules;
+  const alanEventEmitter = new NativeEventEmitter(AlanEventEmitter);
+  // let item;
+  alanEventEmitter.addListener('onCommand', data => {
+    console.log(`got command event ${JSON.stringify(data)}`);
+    navigateTo(props.navigation, Screens.bottomTabs, {
+      screen: BottomTabs.home,
+    });
+  });
   return (
     <View style={style.container}>
       <HeaderView

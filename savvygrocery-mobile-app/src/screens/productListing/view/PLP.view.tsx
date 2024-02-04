@@ -14,14 +14,25 @@ import SearchTabSVG from '../../../resources/assets/svg/SearchTabSVG';
 import {Image} from 'react-native-elements';
 import {ActivityIndicator} from 'react-native';
 import HeaderView from '../../../uilib/organisms/Header/view/Header.view';
+import {NativeEventEmitter, NativeModules} from 'react-native';
 
 const PLPView = props => {
   const style = styles(props.theme);
+  const { AlanEventEmitter} = NativeModules;
+  const alanEventEmitter = new NativeEventEmitter(AlanEventEmitter);
+  let item;
+  alanEventEmitter.addListener('onCommand', data => {
+    console.log(`got command event ${JSON.stringify(data)}`);
+    navigateTo(props.navigation, Screens.testDetail, {
+      item: item,
+    });
+  });
   const homeFlatlistRenderItem = item => {
     return (
       <CardView style={style.flatListCard}>
         <TouchableOpacity
           onPress={() => {
+            item = item.data
             navigateTo(props.navigation, Screens.testDetail, {
               item: item.data,
             });

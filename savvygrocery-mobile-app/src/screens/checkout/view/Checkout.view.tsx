@@ -14,14 +14,22 @@ import { Screens } from '../../../core/constants/Screens.constant';
 import { Image } from 'react-native';
 import ItemCard from '../../../uilib/atoms/shopItem/ItemCard.view';
 import { useRoute } from '@react-navigation/native';
-
+import { NativeEventEmitter, NativeModules } from 'react-native';
 const CheckoutView = props => {
   const style = styles(props.theme);
   // const item = props.item;
   const route = useRoute();
   const address = route?.params;
 
-
+  const { AlanEventEmitter} = NativeModules;
+  const alanEventEmitter = new NativeEventEmitter(AlanEventEmitter);
+  // let item;
+  alanEventEmitter.addListener('onCommand', data => {
+    console.log(`got command event ${JSON.stringify(data)}`);
+    navigateTo(props.navigation, Screens.orderConfirmation, {
+      item: props.cartItems[0],
+    });
+  });
   const homeFlatlistRenderItem = item => {
 
     return (
